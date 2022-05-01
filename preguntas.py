@@ -22,7 +22,6 @@ def pregunta_01():
     40
 
     """
-    def pregunta_01():
     return len(tbl0)
 
 
