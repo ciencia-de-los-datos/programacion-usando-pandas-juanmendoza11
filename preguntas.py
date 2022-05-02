@@ -119,6 +119,7 @@ def pregunta_07():
     return tbl0.groupby(['_c1'])['_c2'].sum()
 
 
+
 def pregunta_08():
     """
     Agregue una columna llamada `suma` con la suma de _c0 y _c2 al archivo `tbl0.tsv`.
