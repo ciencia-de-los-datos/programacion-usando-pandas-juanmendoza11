@@ -203,7 +203,16 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
-    return
+    tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+    tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
+    tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
+
+    tbl1 = tbl1.sort_values(by = ['_c4'], ascending = True)
+    tbl1['y'] = tbl1.groupby(['_c0'])['_c4'].transform(lambda x: ','.join(x))
+    x = tbl1[['_c0','y']].drop_duplicates()
+    z = x.sort_values(by = ['_c0'], ascending= True).reset_index(drop= True).rename(columns= {'y':'_c4'})
+
+    return z
 
 
 def pregunta_12():
