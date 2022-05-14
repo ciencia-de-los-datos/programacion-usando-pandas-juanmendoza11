@@ -165,7 +165,6 @@ def pregunta_10():
     """
     Construya una tabla que contenga _c1 y una lista separada por ':' de los valores de
     la columna _c2 para el archivo `tbl0.tsv`.
-
     Rta/
                                    _c1
       _c0
@@ -175,7 +174,17 @@ def pregunta_10():
     3   D                  1:2:3:5:5:7
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
-    return
+    tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+    tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
+    tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
+
+    tbl0['_c2'] = tbl0['_c2'].map(str).sort_values()
+    tbl0 = tbl0.sort_values(by = ['_c1','_c2'], ascending = True)
+    tbl0['y'] = tbl0.groupby(['_c1'])['_c2'].transform(lambda x: ':'.join(x))
+    x = tbl0[['_c1','y']].drop_duplicates()
+    z = x.rename(columns= {'y':'_c2'}).reset_index(drop= True).set_index('_c1')
+
+    return z
 
 
 def pregunta_11():
