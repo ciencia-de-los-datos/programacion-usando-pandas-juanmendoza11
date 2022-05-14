@@ -203,6 +203,9 @@ def pregunta_11():
     38   38      d,e
     39   39    a,d,f
     """
+    tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+    tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
+    tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
 
     tbl1 = tbl1.sort_values(by = ['_c4'], ascending = True)
     tbl1['y'] = tbl1.groupby(['_c0'])['_c4'].transform(lambda x: ','.join(x))
@@ -250,6 +253,9 @@ def pregunta_13():
     E    275
     Name: _c5b, dtype: int64
     """
+    tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+    tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
+    tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
 
     x = pd.merge(tbl0, tbl2, on='_c0')
     y= x.groupby('_c1')['_c5b'].sum()
