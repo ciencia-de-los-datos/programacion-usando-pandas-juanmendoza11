@@ -230,6 +230,10 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
+    tbl0 = pd.read_csv("tbl0.tsv", sep="\t")
+    tbl1 = pd.read_csv("tbl1.tsv", sep="\t")
+    tbl2 = pd.read_csv("tbl2.tsv", sep="\t")
+
     tbl2['_c5b'] = tbl2['_c5b'].map(str).sort_values()
     tbl2['y'] = tbl2['_c5a'] +':' + tbl2['_c5b'].sort_values()
     tbl2 = tbl2.sort_values(by='y')
